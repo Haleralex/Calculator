@@ -1,6 +1,7 @@
 package com.example.calculator.expressions
 
 import java.util.*
+import kotlin.math.sqrt
 
 class ExpressionCreator {
     private val expressionConverter = ExpressionConverter()
@@ -30,6 +31,10 @@ class ExpressionCreator {
                 "/" -> {
                     val res = this.getElementValue(stack)
                     stack.push(res!!.second / res.first)
+                }
+                "√" ->{
+                    val res = this.getDoubleValue(element)
+                    stack.push(sqrt(res))
                 }
                 else -> {
                     stack.push(this.getDoubleValue(element))
@@ -65,6 +70,9 @@ class ExpressionCreator {
         } else {
             0.0//this.valueProvider?.getValue(value as String)
         }
+
+        if (stack.isEmpty())
+            return Pair(first!!, 0.0)
 
         value = doubleOrString(stack.pop())
         second = if (value is Number) {

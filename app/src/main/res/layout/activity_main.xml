@@ -142,6 +142,10 @@
                 android:id="@+id/tvPlus"
                 style="@style/ActionButtonStyle"
                 android:text="+" />
+            <TextView
+                android:id="@+id/tvSqrt"
+                style="@style/ActionButtonStyle"
+                android:text="√" />
 
         </LinearLayout>
 
@@ -171,6 +175,11 @@
                 android:id="@+id/tvEquals"
                 style="@style/ActionButtonStyle"
                 android:text="=" />
+
+            <TextView
+                android:id="@+id/tv1divide"
+                style="@style/ActionButtonStyle"
+                android:text="1/" />
 
         </LinearLayout>
 

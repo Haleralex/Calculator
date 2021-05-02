@@ -7,8 +7,6 @@ class ExpressionCreator {
     private val expressionConverter = ExpressionConverter()
 
     fun Calculate(expression: String): Double {
-        //if (expression.trim().isEmpty())
-            //return null
         val rpnArray = expressionConverter.Convert(expression)
         val stack = Stack<Double>()
 
@@ -33,8 +31,8 @@ class ExpressionCreator {
                     stack.push(res!!.second / res.first)
                 }
                 "√" ->{
-                    val res = this.getDoubleValue(element)
-                    stack.push(sqrt(res))
+                    val res = this.getElementValueSolo(stack)
+                    stack.push(sqrt(res!!))
                 }
                 else -> {
                     stack.push(this.getDoubleValue(element))
@@ -82,6 +80,20 @@ class ExpressionCreator {
         }
 
         return Pair(first!!, second!!)
+    }
+    private fun getElementValueSolo(stack: Stack<Double>): Double? {
+        if (stack.isEmpty())
+            return null
+        val first: Double?
+
+        var value = doubleOrString(stack.pop())
+        first = if (value is Number) {
+            value as Double
+        } else {
+            0.0//this.valueProvider?.getValue(value as String)
+        }
+
+        return first
     }
 
     private fun doubleOrString(element: Any) = try {

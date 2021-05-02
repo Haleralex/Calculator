@@ -6,7 +6,8 @@ class ExpressionConverter
             "+" to 0,
             "-" to 0,
             "*" to 5,
-            "/" to 5
+            "/" to 5,
+            "√" to 0,
     )
 
     fun Convert(expression: String): Array<String>
@@ -76,7 +77,7 @@ class ExpressionConverter
         var prevIndex = 0
         for (index in 0 until expression.length) {
             when (expression[index]) {
-                '+', '-', '*', '/', '(', ')' -> {
+                '+', '-', '*', '/', '(', ')', '√' -> {
                     if (!expression.substring(prevIndex, index).trim().isEmpty())
                         result.add(expression.substring(prevIndex, index))
                     result.add(expression[index].toString())

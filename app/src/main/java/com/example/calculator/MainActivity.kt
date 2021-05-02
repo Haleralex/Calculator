@@ -32,7 +32,8 @@ class MainActivity : AppCompatActivity() {
         tvDivide.setOnClickListener { appendOnExpresstion("/", false) }
         tvOpen.setOnClickListener { appendOnExpresstion("(", false) }
         tvClose.setOnClickListener { appendOnExpresstion(")", false) }
-
+        tvSqrt.setOnClickListener { appendOnExpresstion("√", false) }
+        tv1divide.setOnClickListener { appendOnExpresstion("1/", false) }
         tvClear.setOnClickListener {
             tvExpression.text = ""
             tvResult.text = ""
